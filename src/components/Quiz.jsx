@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import dataset from '../data/questions';
 
-export const Quiz = () => {
+export const Quiz = ({ updateScore, endGame, updateGameState }) => {
     const [questions, setQuestions] = useState(dataset);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [userChoice, setUserChoice] = useState(null);
@@ -18,8 +18,10 @@ export const Quiz = () => {
 
     const nextQuestion = () => {
         // do we have more questions (?)
-        if(currentQuestion >= questions.length) {
+        if(currentQuestion >= questions.length - 1) {
             console.log("Game Over Dude");
+            endGame(true);
+            updateGameState(false)
         }
         setCurrentQuestion(currentQuestion + 1);
     }
@@ -27,7 +29,8 @@ export const Quiz = () => {
     const checkAnswer = (ans) => {
         if(ans === questions[currentQuestion].answer) {
             console.log("Correct")
-            setScore((prev) => prev += 10)
+            setScore((prev) => prev += 10);
+            updateScore((prev => prev += 10));
         }
         nextQuestion();
     }
@@ -63,7 +66,6 @@ export const Quiz = () => {
                         className="user-choice"
                         value={questions[currentQuestion].choices[i]}
                         >{ans}</button>
-
                 ))}
             </div>
         </div>
