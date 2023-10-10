@@ -20,8 +20,8 @@ export const Quiz = ({ updateScore, endGame, updateGameState }) => {
         // do we have more questions (?)
         if(currentQuestion >= questions.length - 1) {
             console.log("Game Over Dude");
-            endGame(true);
-            updateGameState(false)
+            // endGame(true);
+            updateGameState('end')
         }
         setCurrentQuestion(currentQuestion + 1);
     }
@@ -64,6 +64,7 @@ export const Quiz = ({ updateScore, endGame, updateGameState }) => {
                 { questions[currentQuestion].choices.map((ans, i) => (
                     <button 
                         className="user-choice"
+                        key={i}
                         value={questions[currentQuestion].choices[i]}
                         >{ans}</button>
                 ))}

@@ -7,7 +7,7 @@ export const Welcome = ({ start }) => {
         <div>Welcome to the Quiz Game</div>
         <h3>Press the <span className='startBtn'>start</span> button to begin</h3>
     
-        <button onClick={ () => start(true)}>Start</button>
+        <button onClick={ () => start('start')}>Start</button>
     </div>
   )
 }
