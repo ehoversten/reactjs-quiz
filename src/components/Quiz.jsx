@@ -31,7 +31,7 @@ export const Quiz = ({ updateScore, updateGameState }) => {
 
     return (
         <div className="quiz-container">
-            <h4 className="score-container">Score: {score}</h4>
+            <h3 className="score-container">Score: {score}</h3>
             <h2 className="question-title">{questions[currentQuestion].title}</h2>
             <div className="answer-choice-container" onClick={handleUserChoice}>
                 { questions[currentQuestion].choices.map((ans, i) => (
